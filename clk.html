@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.5.2/dist/css/bootstrap.min.css">
+    <style>
+        #digi {
+            color: orangered;
+            display: flex;
+            justify-content: center;
+            margin-top: 20%;
+            font-size: 100px;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            max-width: 100%;
+            background-color: cyan;
+        }
+
+        nav {
+            background-color: forestgreen;
+            max-width: 100%;
+            text-align: center;
+            padding: 20px 0px;
+        }
+        a {
+            color: antiquewhite;
+            text-decoration: none;
+            font-size: large;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="#">Mini-Projects on JS</a>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div id="digi"></div>
+        </div>
+    </div>
+</div>
+<script>
+    function show() {
+        var date = new Date();
+        var hour = date.getHours();
+        var minutes = date.getMinutes();
+        var seconds = date.getSeconds();
+        var session = "AM";
+
+        if (hour == 0) {
+            hour = 12;
+        }
+        if (hour > 12) {
+            hour = hour - 12;
+        }
+        if (hour > 11) {
+            session = "PM";
+        }
+
+        hour = (hour < 10) ? "0" + hour : hour;
+        minutes = (minutes < 10) ? "0" + minutes : minutes;
+        seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+        document.getElementById("digi").innerHTML = hour + ":" + minutes + ":" + seconds + " " + session;
+        setTimeout(show, 1000);
+    }
+
+    show();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.2/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

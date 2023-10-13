@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo-list</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.5.2/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            max-width: 100%;
+            background-color: cyan;
+        }
+
+        nav {
+            background-color: forestgreen;
+            max-width: 100%;
+            text-align: center;
+            padding: 20px 0px;
+        }
+
+        .main {
+            margin-top: 20px;
+        }
+
+        h1 {
+            color: orangered;
+        }
+
+        #box {
+            width: 100%;
+            max-width: 30vw;
+        }
+
+        input[type="button"] {
+            width: 100%;
+            max-width: 10vw;
+        }
+        a {
+            color: antiquewhite;
+            text-decoration: none;
+            font-size: large;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="#">Mini-Projects on JS</a>
+    </div>
+</nav>
+<div class="container main">
+    <h1>TO DO LIST</h1>
+    <br><br>
+    <div class="row">
+        <form action="">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="todo item" id="box">
+            </div>
+            <br>
+            <div class="form-group">
+                <input type="button" class="btn btn-primary" value="Add" onclick="add_item()">
+            </div>
+        </form>
+    </div>
+    <div class="row">
+        <ul id="list_item" class="list-group"></ul>
+    </div>
+</div>
+<script>
+    function add_item() {
+        let item = document.getElementById("box");
+        let list_item = document.getElementById("list_item");
+        if (item.value != "") {
+            let make_li = document.createElement("li");
+            make_li.className = "list-group-item";
+            make_li.appendChild(document.createTextNode(item.value));
+            list_item.appendChild(make_li);
+            item.value = "";
+            make_li.onclick = function () {
+                this.parentNode.removeChild(this);
+            }
+        } else {
+            alert("Please enter an item");
+        }
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.2/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
